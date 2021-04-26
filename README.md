@@ -1,13 +1,5 @@
 # KOTLIN - MVVM - COROUTINES - KOIN 
 A Photo list sample that retrieves pictures from Pixabay site
- 
-<ul>
-<li>The application supports both portrait and landscape mode </li>
-<li>The user is able to search for images entering a search term with at least 3  characters </li>
-<li>When the app starts it triggers a search for the string "flowers"</li>
-<li>When an item in the result list gets clicked, a new detail screen will be opened</li>
-
-</ul>
 
 <h2>What is used in project? </h2>
 <ol>
