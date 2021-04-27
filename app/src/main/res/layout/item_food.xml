@@ -55,7 +55,7 @@
         app:srcCompat="@drawable/round_thumb_up_24" />
     
     <TextView
-        android:fontFamily="cursive"
+        style="@style/AppTheme.TextViewStyle"
         android:id="@+id/txtDownload"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -65,7 +65,7 @@
         tools:text="1390" />
     
     <TextView
-        android:fontFamily="cursive"
+        style="@style/AppTheme.TextViewStyle"
         android:id="@+id/txtView"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -75,7 +75,7 @@
         tools:text="2500" />
     
     <TextView
-        android:fontFamily="cursive"
+        style="@style/AppTheme.TextViewStyle"
         android:id="@+id/txtLikes"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -85,7 +85,7 @@
         tools:text="23" />
     
     <TextView
-        android:fontFamily="cursive"
+        style="@style/AppTheme.TextViewStyle"
         android:id="@+id/txtUserName"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
