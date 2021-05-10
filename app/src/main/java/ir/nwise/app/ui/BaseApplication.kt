@@ -1,8 +1,10 @@
 package ir.nwise.app.ui
 
 import android.app.Application
-import ir.nwise.app.domain.usecase.domainModule
-import ir.nwise.app.networking.networkModule
+import ir.nwise.app.di.databaseModule
+import ir.nwise.app.di.domainModule
+import ir.nwise.app.di.networkModule
+import ir.nwise.app.di.uiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -19,7 +21,8 @@ class BaseApplication : Application() {
                 listOf(
                     uiModule,
                     networkModule,
-                    domainModule
+                    domainModule,
+                    databaseModule
                 )
             )
         }

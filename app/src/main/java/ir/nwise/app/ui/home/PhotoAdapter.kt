@@ -8,7 +8,7 @@ import ir.nwise.app.ui.base.BaseViewHolder
 import ir.nwise.app.ui.inflate
 import ir.nwise.app.ui.replaceAll
 
-internal class FoodAdapter(
+internal class PhotoAdapter(
     private val onItemClicked: (PhotoResponse) -> Unit
 ) : RecyclerView.Adapter<BaseViewHolder<out PhotoResponse>>() {
 
@@ -18,7 +18,7 @@ internal class FoodAdapter(
         parent: ViewGroup,
         viewType: Int
     ): BaseViewHolder<out PhotoResponse> {
-        return FoodViewHolder(
+        return PhotoViewHolder(
             containerView = parent.inflate(R.layout.item_food),
             onItemClicked = onItemClicked
         )
@@ -27,7 +27,7 @@ internal class FoodAdapter(
     override fun onBindViewHolder(holder: BaseViewHolder<out PhotoResponse>, position: Int) {
         val model = items.getOrNull(position) ?: return
         when (holder) {
-            is FoodViewHolder -> holder.bind(model)
+            is PhotoViewHolder -> holder.bind(model)
         }
     }
 

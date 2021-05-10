@@ -1,4 +1,4 @@
-package ir.nwise.app.ui
+package ir.nwise.app.di
 
 import ir.nwise.app.ui.home.HomeFragment
 import ir.nwise.app.ui.home.HomeViewModel

@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.item_food.txtLikes
 import kotlinx.android.synthetic.main.item_food.txtUserName
 import kotlinx.android.synthetic.main.item_food.txtView
 
-class FoodViewHolder(
+class PhotoViewHolder(
     override val containerView: View,
     private val onItemClicked: (PhotoResponse) -> Unit
 ) : BaseViewHolder<PhotoResponse>(containerView) {

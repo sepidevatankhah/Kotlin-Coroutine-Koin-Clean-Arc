@@ -15,7 +15,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class HomeFragment : BaseFragment<HomeViewState, HomeViewModel>() {
 
     private val homeViewModel: HomeViewModel by viewModel()
-    private val foodAdapter: FoodAdapter = FoodAdapter { food ->
+    private val photoAdapter: PhotoAdapter = PhotoAdapter { food ->
         Toast.makeText(context, food.userName, Toast.LENGTH_LONG).show()
     }
 
@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment<HomeViewState, HomeViewModel>() {
                 //TODO: Add custom spinner
             }
             is HomeViewState.Loaded -> {
-                foodAdapter.submitItems(state.photos)
+                photoAdapter.submitItems(state.photos)
                 initRecyclerView()
             }
             is HomeViewState.Error -> {
@@ -58,7 +58,7 @@ class HomeFragment : BaseFragment<HomeViewState, HomeViewModel>() {
         recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            adapter = foodAdapter
+            adapter = photoAdapter
         }
 
     }

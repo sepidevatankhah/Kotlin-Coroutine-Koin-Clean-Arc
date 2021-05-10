@@ -1,12 +1,11 @@
 package ir.nwise.app.ui.home
 
 import ir.nwise.app.domain.model.PhotoResponse
-import ir.nwise.app.domain.usecase.GetFoodResultUseCase
+import ir.nwise.app.domain.usecase.GetPhotoResultUseCase
 import ir.nwise.app.domain.usecase.base.UseCaseResult
 import ir.nwise.app.ui.base.BaseViewModel
 
-
-class HomeViewModel(private val getFoodResultUseCase: GetFoodResultUseCase) :
+class HomeViewModel(private val getPhotoResultUseCase: GetPhotoResultUseCase) :
     BaseViewModel<HomeViewState>() {
 
     init {
@@ -14,9 +13,9 @@ class HomeViewModel(private val getFoodResultUseCase: GetFoodResultUseCase) :
     }
 
     private fun getFoods() {
-        getFoodResultUseCase.execute {
+        getPhotoResultUseCase.execute {
             when (this) {
-                is UseCaseResult.Success -> liveData.postValue(HomeViewState.Loaded(this.data.photoList))
+                is UseCaseResult.Success -> liveData.postValue(HomeViewState.Loaded(this.data))
                 is UseCaseResult.Error -> liveData.postValue(HomeViewState.Error(this.exception))
             }
         }
@@ -24,7 +23,7 @@ class HomeViewModel(private val getFoodResultUseCase: GetFoodResultUseCase) :
 
     override fun onCleared() {
         super.onCleared()
-        getFoodResultUseCase.unsubscribe()
+        getPhotoResultUseCase.unsubscribe()
     }
 }
 
