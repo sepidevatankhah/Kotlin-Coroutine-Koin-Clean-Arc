@@ -1,3 +1,5 @@
+Actions Status Kotlin Version AGP Gradle License
+
 # KOTLIN - MVVM - COROUTINES - KOIN 
 A Photo list sample that retrieves pictures from Pixabay site
 
@@ -12,6 +14,13 @@ A Photo list sample that retrieves pictures from Pixabay site
 <li><strong>Koin</strong>: Using Dependency injection to manage the dependencies in an optimal way.</li>
 <li><strong>Glide</strong>: To view images from the network </li>
 </ol>
+
+My main objective is to achieve with the least amount of code RUDT principles which means that the code must be easy to:
+
+Read
+Update
+Debug
+Test (Unit & UI)
 
 Library reference resources:
 <ol>
