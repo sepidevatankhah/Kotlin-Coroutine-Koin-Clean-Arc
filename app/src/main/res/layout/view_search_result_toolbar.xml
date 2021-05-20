@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorPrimaryDark"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center_vertical"
+    android:id="@+id/search_toolbar"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:paddingEnd="0dp"
+    android:paddingStart="14dp"
+    tools:showIn="@layout/fragment_search">
+    
+    <ImageView
+        android:id="@+id/search_bar_icon"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:visibility="visible"
+        app:srcCompat="@drawable/ic_search"
+        tools:ignore="ContentDescription" />
+    
+    <ImageView
+        android:id="@+id/search_bar_delete"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_dismiss"
+        android:visibility="gone"
+        tools:ignore="ContentDescription" />
+    
+    <View
+        android:id="@+id/separator"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_width="0dp" />
+    
+    <androidx.appcompat.widget.AppCompatEditText
+        android:background="@null"
+        android:hint="@string/search_hint"
+        android:id="@+id/search_bar_edit_text"
+        android:imeOptions="actionSearch"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/grey_light"
+        android:textCursorDrawable="@null"
+        android:textSize="17sp" />
+</LinearLayout>

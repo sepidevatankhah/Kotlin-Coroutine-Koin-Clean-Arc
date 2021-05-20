@@ -11,20 +11,20 @@ import kotlin.coroutines.CoroutineContext
 
 typealias CompletionBlock<T> = UseCaseResult<T>.() -> Unit
 
-abstract class UseCase<T> {
+abstract class UseCase<Param : Any?, Response> {
     private var parentJob: Job = Job()
     var backgroundContext: CoroutineContext = Dispatchers.IO
     var mainContext: CoroutineContext = Dispatchers.Main
 
-    protected abstract suspend fun executeOnBackground(): T
+    protected abstract suspend fun executeOnBackground(param: Param?): Response
 
-    fun execute(block: CompletionBlock<T> ) {
+    fun execute(param: Param? = null, block: CompletionBlock<Response>) {
         unsubscribe()
         parentJob = Job()
         CoroutineScope(mainContext + parentJob).launch {
             try {
                 val result = withContext(backgroundContext) {
-                    executeOnBackground()
+                    executeOnBackground(param)
                 }
                 block(UseCaseResult.Success(result))
             } catch (cancellationException: CancellationException) {

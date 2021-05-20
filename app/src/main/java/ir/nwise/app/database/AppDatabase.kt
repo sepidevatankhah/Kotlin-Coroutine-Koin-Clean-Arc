@@ -2,14 +2,23 @@ package ir.nwise.app.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import ir.nwise.app.domain.model.PhotoResponse
+import androidx.room.TypeConverters
+import ir.nwise.app.database.converters.ArtistConverter
+import ir.nwise.app.database.converters.ArtistImageConverter
+import ir.nwise.app.domain.model.Album
+import ir.nwise.app.domain.model.Artist
+import ir.nwise.app.domain.model.ArtistImage
 
-@Database(entities = [PhotoResponse::class], version = AppDatabase.VERSION)
+@Database(
+    entities = [Album::class, Artist::class, ArtistImage::class],
+    version = AppDatabase.VERSION
+)
+@TypeConverters(ArtistImageConverter::class, ArtistConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    companion object{
-        const val DB_NAME ="photos.db"
+    companion object {
+        const val DB_NAME = "music.db"
         const val VERSION = 1
     }
 
-    abstract fun photoDao() : PhotoDao
+    abstract fun albumDao(): AlbumDao
 }

@@ -6,6 +6,6 @@
     
     <fragment
         android:id="@+id/homeFragment"
-        android:name="ir.nwise.app.ui.home.HomeFragment"
-        app:navGraph="@navigation/home_graph" />
+        android:label="@string/my_top_albums"
+        android:name="ir.nwise.app.ui.home.HomeFragment" />
 </navigation>

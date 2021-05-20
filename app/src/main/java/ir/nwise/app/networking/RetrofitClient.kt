@@ -25,7 +25,6 @@ fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClien
             // Get the request from the chain.
             var request = chain.request()
             val url = request.url.newBuilder()
-                .addQueryParameter("key", Config.API_KEY)
                 .build()
 
             request = request.newBuilder()
@@ -34,7 +33,7 @@ fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClien
 
             chain.proceed(request)
         }
-        .addInterceptor(loggingInterceptor).build()
+        .addInterceptor(loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)).build()
 }
 
 fun provideLoggingInterceptor(): HttpLoggingInterceptor {

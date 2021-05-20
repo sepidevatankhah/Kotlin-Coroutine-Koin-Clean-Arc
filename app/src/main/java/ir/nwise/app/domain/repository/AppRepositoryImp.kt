@@ -2,41 +2,77 @@ package ir.nwise.app.domain.repository
 
 import android.content.Context
 import ir.nwise.app.data.Util.NetworkManager.isOnline
-import ir.nwise.app.database.PhotoDao
-import ir.nwise.app.domain.model.BasePhoto
-import ir.nwise.app.domain.model.PhotoResponse
+import ir.nwise.app.database.AlbumDao
+import ir.nwise.app.domain.entities.ArtistSearchDto
+import ir.nwise.app.domain.entities.TopAlbumsDto
+import ir.nwise.app.domain.model.Album
+import ir.nwise.app.domain.model.SearchResult
+import ir.nwise.app.domain.model.TopAlbums
+import ir.nwise.app.domain.model.UserDto
+import ir.nwise.app.domain.model.UserResponse
 import ir.nwise.app.networking.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class AppRepositoryImp(
     private val apiService: ApiService,
-    private val photoDao: PhotoDao,
+    private val albumDao: AlbumDao,
     private val context: Context
 ) : AppRepository {
-    override suspend fun getPhotoResult(): List<PhotoResponse> {
+
+    //repositories from remote:
+    override suspend fun getMobileSession(userDto: UserDto): UserResponse {
+        return apiService.getMobileSession(
+            api_key = userDto.api_key,
+            password = userDto.password,
+            api_sig = userDto.api_sig,
+            username = userDto.username,
+            method = userDto.method,
+            format = userDto.format
+        ).await()
+    }
+
+    override suspend fun searchArtist(searchDto: ArtistSearchDto): SearchResult {
         return if (isOnline(context)) {
-            val response = apiService.getPhotos("", 50, 1).await()
-            if (getAllPhotosFromCache().isEmpty())
-                savePhotos(response)
-            response.photoList
-        } else {
-            getAllPhotosFromCache()
-        }
-    }
-
-    override suspend fun savePhotos(basePhoto: BasePhoto): Long {
-        if (basePhoto.photoList.isNotEmpty()) {
-            for (photo in basePhoto.photoList) {
-                withContext(Dispatchers.IO) { photoDao.insertPhoto(photo) }
+            with(searchDto) {
+                apiService.searchArtist(
+                    api_key = apiKey,
+                    artist = artist,
+                    method = method,
+                    format = format,
+                    limit = limit.toString(),
+                    page = page.toString()
+                ).await()
             }
+        } else {
+            SearchResult(results = null)
         }
-        return 0L
     }
 
-    override suspend fun getAllPhotosFromCache(): MutableList<PhotoResponse> {
-        return withContext(Dispatchers.IO) {
-            photoDao.selectAll()
-        }
+    override suspend fun getTopAlbums(searchDto: TopAlbumsDto): TopAlbums {
+        return apiService.topAlbums(
+            api_key = searchDto.apiKey,
+            artist = searchDto.artist,
+            method = searchDto.method,
+            format = searchDto.format
+        ).await()
+    }
+
+
+    //repositories from database:
+    override suspend fun saveAlbum(album: Album): Long {
+        return withContext(Dispatchers.IO) { albumDao.saveAlbum(album) }
+    }
+
+    override suspend fun getAlbumsFromCache(): List<Album> {
+        return withContext(Dispatchers.IO) { albumDao.selectAll() }
+    }
+
+    override suspend fun getAlbumCountWithName(name: String): Int {
+        return withContext(Dispatchers.IO) { albumDao.getAlbumCountWithName(name) }
+    }
+
+    override suspend fun deleteAlbum(album: Album): Int {
+        return withContext(Dispatchers.IO) { albumDao.deleteAlbum(album) }
     }
 }

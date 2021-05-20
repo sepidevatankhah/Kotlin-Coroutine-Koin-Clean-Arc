@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_graph"
+    app:startDestination="@id/searchFragment">
+    
+    <fragment
+        android:id="@+id/searchFragment"
+        android:label="@string/artists"
+        android:name="ir.nwise.app.ui.search.SearchFragment">
+        <action
+            android:id="@+id/action_searchFragment_to_topAlbumsFragment"
+            app:destination="@id/topAlbumsFragment" />
+        <argument
+            android:name="searchText"
+            app:argType="string"
+            app:nullable="true" />
+    
+    </fragment>
+    <fragment
+        android:id="@+id/topAlbumsFragment"
+        android:label="@string/top_albums"
+        android:name="ir.nwise.app.ui.album.TopAlbumsFragment">
+        <argument
+            android:name="artist"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>

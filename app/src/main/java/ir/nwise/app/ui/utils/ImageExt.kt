@@ -1,4 +1,4 @@
-package ir.nwise.app.ui
+package ir.nwise.app.ui.utils
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

@@ -23,6 +23,7 @@ allprojects {
         coroutineVersion = '1.4.1'
         retrofitVersion = '2.9.0'
         okHttpVersion = '4.6.0'
+        roomVersion = "2.3.0"
     }
 
     repositories {

@@ -7,13 +7,29 @@
     android:layout_width="match_parent"
     tools:context=".ui.MainActivity">
     
-<!--    //TODO: Change with frameLayout-->
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_host_layout"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:background="@color/colorTextIcons"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        android:id="@+id/bottom_navigation_view"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/home_graph" />
+        app:itemBackground="@color/colorTextIcons"
+        app:itemHorizontalTranslationEnabled="false"
+        app:labelVisibilityMode="labeled"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation_bottom_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,11 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/campton_light</item>
     </style>
     
     
     <style name="AppTheme.TextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">cursive</item>
+        <item name="android:fontFamily">@font/campton_light</item>
     </style>
 
 </resources>

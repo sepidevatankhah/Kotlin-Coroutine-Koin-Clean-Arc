@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TODO:To remove in case not used-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_bookmark_full" android:state_activated="true" />
+    <item android:drawable="@drawable/ic_bookmark" />
+</selector>

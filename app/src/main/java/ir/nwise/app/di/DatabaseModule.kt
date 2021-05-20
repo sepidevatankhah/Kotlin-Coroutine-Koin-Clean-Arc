@@ -2,8 +2,8 @@ package ir.nwise.app.di
 
 import android.app.Application
 import androidx.room.Room
+import ir.nwise.app.database.AlbumDao
 import ir.nwise.app.database.AppDatabase
-import ir.nwise.app.database.PhotoDao
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -15,10 +15,10 @@ val databaseModule = module {
             .build()
     }
 
-    fun providePhotoDao(db: AppDatabase): PhotoDao {
-        return db.photoDao()
+    fun provideAlbumDao(db: AppDatabase): AlbumDao {
+        return db.albumDao()
     }
 
     single { provideRoomDatabase(androidApplication()) }
-    single { providePhotoDao(get()) }
+    single { provideAlbumDao(get()) }
 }
