@@ -11,7 +11,9 @@ import ir.nwise.app.domain.usecase.GetMobileSessionUseCase
 import ir.nwise.app.domain.usecase.SaveAlbumUseCase
 import ir.nwise.app.domain.usecase.SearchArtistUseCase
 import ir.nwise.app.domain.usecase.TopAlbumsUseCase
+import ir.nwise.app.domain.usecase.base.DefaultDispatcherProvider
 import ir.nwise.app.networking.ApiService
+import kotlinx.coroutines.MainScope
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -21,7 +23,13 @@ val domainModule = module {
     }
 
     factory { GetMobileSessionUseCase(get()) }
-    factory { SearchArtistUseCase(get()) }
+    factory {
+        SearchArtistUseCase(
+            appRepository = get(),
+            coroutineScope = MainScope(),
+            dispatchers = DefaultDispatcherProvider()
+        )
+    }
     factory { TopAlbumsUseCase(get()) }
     factory { SaveAlbumUseCase(get()) }
     factory { GetAlbumCountWithNameUseCase(get()) }

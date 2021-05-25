@@ -33,7 +33,7 @@ class SearchFragment : BaseFragment<SearchViewState, SearchViewModel>() {
                 //TODO: Add custom spinner
             }
             is SearchViewState.Loaded -> {
-                searchAdapter.submitItems(state.results ?: listOf())
+                searchAdapter.submitItems(state.results)
                 initRecyclerView()
             }
             is SearchViewState.Error -> {
@@ -72,7 +72,6 @@ class SearchFragment : BaseFragment<SearchViewState, SearchViewModel>() {
             adapter = searchAdapter
             addOnScrollListener(InfiniteScrollListener(layoutManager as LinearLayoutManager) {
                 hideKeyboard()
-                loadNextPage()
             })
 
             viewModel.listState?.let {
@@ -83,9 +82,6 @@ class SearchFragment : BaseFragment<SearchViewState, SearchViewModel>() {
         }
 
     }
-
-    //TODO: To fix scroll event
-    private fun loadNextPage() = viewModel.loadDataNextPage(search_bar_edit_text?.text.toString())
 
     override fun onDestroyView() {
         viewModel.listState = recyclerView?.layoutManager?.onSaveInstanceState()

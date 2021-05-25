@@ -11,7 +11,7 @@ import org.koin.dsl.module
 val uiModule = module {
     factory { HomeFragment() }
 
-    viewModel { HomeViewModel(get(), get(), get()) }
+    viewModel { HomeViewModel(get(), get()) }
     viewModel { SearchViewModel(get()) }
     viewModel { TopAlbumsViewModel(get(), get(), get()) }
 }

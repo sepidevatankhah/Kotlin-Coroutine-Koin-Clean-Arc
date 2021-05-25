@@ -8,7 +8,7 @@ data class ArtistSearchDto(
     override val format: String = Config.FORMAT,
     override val apiKey: String = Config.API_KEY,
     val artist: String,
-    val limit: Int = 20,
+    val limit: Int = 50,
     val page: Int = 1
 ) : BaseDto
 

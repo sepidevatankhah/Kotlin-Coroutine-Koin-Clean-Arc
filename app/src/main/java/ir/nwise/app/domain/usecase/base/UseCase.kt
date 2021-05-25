@@ -2,28 +2,24 @@ package ir.nwise.app.domain.usecase.base
 
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.CoroutineContext
 
 typealias CompletionBlock<T> = UseCaseResult<T>.() -> Unit
 
-abstract class UseCase<Param : Any?, Response> {
-    private var parentJob: Job = Job()
-    var backgroundContext: CoroutineContext = Dispatchers.IO
-    var mainContext: CoroutineContext = Dispatchers.Main
-
+abstract class UseCase<Param : Any?, Response>(
+    private val coroutineScope: CoroutineScope = MainScope(),
+    private val dispatchers: DispatcherProvider = DefaultDispatcherProvider()
+) {
     protected abstract suspend fun executeOnBackground(param: Param?): Response
 
     fun execute(param: Param? = null, block: CompletionBlock<Response>) {
         unsubscribe()
-        parentJob = Job()
-        CoroutineScope(mainContext + parentJob).launch {
+        coroutineScope.launch(dispatchers.job() + dispatchers.main()) {
             try {
-                val result = withContext(backgroundContext) {
+                val result = withContext(dispatchers.io()) {
                     executeOnBackground(param)
                 }
                 block(UseCaseResult.Success(result))
@@ -34,12 +30,11 @@ abstract class UseCase<Param : Any?, Response> {
     }
 
     fun unsubscribe() {
-        parentJob.apply {
+        dispatchers.job().apply {
             cancelChildren()
             cancel()
         }
     }
-
 }
 
 sealed class UseCaseResult<out T> {

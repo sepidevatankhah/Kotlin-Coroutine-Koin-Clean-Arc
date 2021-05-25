@@ -24,6 +24,7 @@ allprojects {
         retrofitVersion = '2.9.0'
         okHttpVersion = '4.6.0'
         roomVersion = "2.3.0"
+        mockito_version = "3.3.3"
     }
 
     repositories {
