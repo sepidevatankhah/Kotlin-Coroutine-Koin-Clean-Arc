@@ -3,8 +3,8 @@ Actions Status Kotlin Version AGP Gradle License
 # KOTLIN - MVVM - COROUTINES - KOIN - ROOM
 This is a project used to implement and explain several topics in Android Development. The idea is to share through different commits and branches with different implementations regarding the use of frameworks, patterns, and good practices, for now are consisted of two branches: 
 <il>
-<li><a href="https://github.com/sepidevatankhah/Kotlin-Coroutine-Koin-Clean-Arc/tree/base-branch">Base_branch</a> is a simple Photo list sample that retrieves pictures from Pixabay site, it is structured according to the Clean Architecture, MVVM Pattern, Koin DI, Coroutines.</li>
-<li><a href="https://github.com/sepidevatankhah/Kotlin-Coroutine-Koin-Clean-Arc/tree/bottom-navigation-branch">Bottom-navigation-branch</a> is a online/offline music list sample from Last.fm, this one is also structured according to the Clean Architecture, MVVM Pattern, Koin DI, Coroutines and the main focus is implementing the Bottom-Navigation according to the Google Navigation Component and working with google ORM (<b>ROOM</b>).</li>
+<li><a href="https://github.com/sepidevatankhah/Kotlin-Coroutine-Koin-Clean-Arc/tree/base-branch">Part 1. Base_branch</a> is a simple Photo list sample that retrieves pictures from Pixabay site, it is structured according to the Clean Architecture, MVVM Pattern, Koin DI, Coroutines.</li>
+<li><a href="https://github.com/sepidevatankhah/Kotlin-Coroutine-Koin-Clean-Arc/tree/bottom-navigation-branch">Part 2. Bottom-navigation-branch</a> is a online/offline music list sample from Last.fm, this one is also structured according to the Clean Architecture, MVVM Pattern, Koin DI, Coroutines and the main focus is implementing the Bottom-Navigation according to the Google Navigation Component and working with google ORM (<b>ROOM</b>).</li>
 </il>
 </br>
 Regarding these projects, will be added step-by-step tutorials in Medium that walk through it, related link will be added as soon as they will be completed.
