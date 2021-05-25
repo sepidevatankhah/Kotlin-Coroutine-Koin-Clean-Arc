@@ -29,7 +29,7 @@ Update
 Debug
 Test (Unit & UI)
 
-Library reference resources:
+<h5>Library reference resources:</h5>
 <ol>
 <li>Koin: <a href="https://insert-koin.io/">Start Koin</a></li>
 <li>Retrofit: <a href="https://github.com/square/retrofit">GitHub - square/retrofit: Type-safe HTTP client for Android and Java by Square, Inc.</a></li>
@@ -37,3 +37,8 @@ Library reference resources:
 <li>Constraint-Layout: <a href="https://developer.android.com/training/constraint-layout/index.html" rel="nofollow">Build a Responsive UI with ConstraintLayout | Android Developers</a></li>
 <li>Glide: <a href="https://github.com/bumptech/glide" rel="nofollow">An image loading and caching library for Android focused on smooth scrolling </a></li>
 </ol>
+
+<h4>Articles</h4>
+<a href="https://proandroiddev.com/clean-architecture-data-flow-dependency-rule-615ffdd79e29/">Clean Architecture Guide (with tested examples): Data Flow != Dependency Rule</a></br>
+<a href="https://proandroiddev.com/the-death-of-presenters-and-the-rise-of-viewmodels-aac-f14d54b419a">The death of Presenters and the rise of ViewModels (AAC)</a></br>
+<a href="https://proandroiddev.com/intro-to-app-modularization-42411e4c421e">Intro to App Modularization</a></br>
