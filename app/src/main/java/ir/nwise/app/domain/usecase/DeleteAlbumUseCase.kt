@@ -1,7 +1,7 @@
 package ir.nwise.app.domain.usecase
 
 import ir.nwise.app.domain.model.Album
-import ir.nwise.app.domain.repository.AppRepository
+import ir.nwise.app.data.repository.AppRepository
 import ir.nwise.app.domain.usecase.base.UseCase
 
 class DeleteAlbumUseCase(private val appRepository: AppRepository) : UseCase<Album, Int>() {

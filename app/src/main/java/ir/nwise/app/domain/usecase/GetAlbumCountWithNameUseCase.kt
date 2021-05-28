@@ -1,6 +1,6 @@
 package ir.nwise.app.domain.usecase
 
-import ir.nwise.app.domain.repository.AppRepository
+import ir.nwise.app.data.repository.AppRepository
 import ir.nwise.app.domain.usecase.base.UseCase
 import kotlin.apply as apply1
 

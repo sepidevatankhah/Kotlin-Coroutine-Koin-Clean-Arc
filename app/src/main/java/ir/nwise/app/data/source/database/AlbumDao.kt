@@ -1,4 +1,4 @@
-package ir.nwise.app.database
+package ir.nwise.app.data.source.database
 
 import androidx.room.Dao
 import androidx.room.Delete

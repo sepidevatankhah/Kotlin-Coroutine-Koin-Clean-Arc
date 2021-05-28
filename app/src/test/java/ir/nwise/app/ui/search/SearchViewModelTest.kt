@@ -2,13 +2,13 @@ package ir.nwise.app.ui.search
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.whenever
+import ir.nwise.app.data.repository.AppRepository
 import ir.nwise.app.domain.entities.ArtistSearchDto
 import ir.nwise.app.domain.entities.MethodType
 import ir.nwise.app.domain.model.Artist
 import ir.nwise.app.domain.model.ArtistMatch
 import ir.nwise.app.domain.model.Search
 import ir.nwise.app.domain.model.SearchResult
-import ir.nwise.app.domain.repository.AppRepository
 import ir.nwise.app.domain.usecase.SearchArtistUseCase
 import ir.nwise.app.utils.CoroutineTestRule
 import ir.nwise.app.utils.captureEmittedData
@@ -31,9 +31,11 @@ import org.mockito.junit.MockitoJUnitRunner
 class SearchViewModelTest {
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
+    // Executes each task synchronously using Architecture Components.
     @get:Rule
     val testInstantTaskExecutorRule: TestRule = InstantTaskExecutorRule()
 
+    // Executes each task synchronously using Architecture Components.
     @get:Rule
     val coroutinesTestRule = CoroutineTestRule()
 

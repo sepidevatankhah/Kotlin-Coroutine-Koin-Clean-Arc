@@ -3,7 +3,7 @@ package ir.nwise.app.domain.usecase
 import ir.nwise.app.domain.entities.TopAlbumsDto
 import ir.nwise.app.domain.model.TopAlbum
 import ir.nwise.app.domain.model.TopAlbums
-import ir.nwise.app.domain.repository.AppRepository
+import ir.nwise.app.data.repository.AppRepository
 import ir.nwise.app.domain.usecase.base.UseCase
 
 class TopAlbumsUseCase(private val appRepository: AppRepository) :

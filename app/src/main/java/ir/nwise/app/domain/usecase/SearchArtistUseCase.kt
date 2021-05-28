@@ -2,7 +2,7 @@ package ir.nwise.app.domain.usecase
 
 import ir.nwise.app.domain.entities.ArtistSearchDto
 import ir.nwise.app.domain.model.SearchResult
-import ir.nwise.app.domain.repository.AppRepository
+import ir.nwise.app.data.repository.AppRepository
 import ir.nwise.app.domain.usecase.base.DefaultDispatcherProvider
 import ir.nwise.app.domain.usecase.base.DispatcherProvider
 import ir.nwise.app.domain.usecase.base.UseCase

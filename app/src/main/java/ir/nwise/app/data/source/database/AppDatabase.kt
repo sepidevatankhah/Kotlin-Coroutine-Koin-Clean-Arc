@@ -1,10 +1,10 @@
-package ir.nwise.app.database
+package ir.nwise.app.data.source.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import ir.nwise.app.database.converters.ArtistConverter
-import ir.nwise.app.database.converters.ArtistImageConverter
+import ir.nwise.app.data.source.database.converters.ArtistConverter
+import ir.nwise.app.data.source.database.converters.ArtistImageConverter
 import ir.nwise.app.domain.model.Album
 import ir.nwise.app.domain.model.Artist
 import ir.nwise.app.domain.model.ArtistImage

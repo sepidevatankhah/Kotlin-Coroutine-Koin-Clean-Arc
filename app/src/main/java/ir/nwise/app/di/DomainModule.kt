@@ -1,9 +1,13 @@
 package ir.nwise.app.di
 
 import android.content.Context
-import ir.nwise.app.database.AlbumDao
-import ir.nwise.app.domain.repository.AppRepository
-import ir.nwise.app.domain.repository.AppRepositoryImp
+import ir.nwise.app.data.source.database.AlbumDao
+import ir.nwise.app.data.source.database.LocalDataSource
+import ir.nwise.app.data.source.database.LocalDataSourceImp
+import ir.nwise.app.data.source.remote.RemoteDataSource
+import ir.nwise.app.data.source.remote.RemoteDataSourceImp
+import ir.nwise.app.data.repository.AppRepository
+import ir.nwise.app.data.repository.AppRepositoryImp
 import ir.nwise.app.domain.usecase.DeleteAlbumUseCase
 import ir.nwise.app.domain.usecase.GetAlbumCountWithNameUseCase
 import ir.nwise.app.domain.usecase.GetAlbumsFromCacheUseCase
@@ -12,14 +16,32 @@ import ir.nwise.app.domain.usecase.SaveAlbumUseCase
 import ir.nwise.app.domain.usecase.SearchArtistUseCase
 import ir.nwise.app.domain.usecase.TopAlbumsUseCase
 import ir.nwise.app.domain.usecase.base.DefaultDispatcherProvider
+import ir.nwise.app.domain.usecase.base.DispatcherProvider
 import ir.nwise.app.networking.ApiService
 import kotlinx.coroutines.MainScope
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val domainModule = module {
-    fun provideRepository(api: ApiService, dao: AlbumDao, context: Context): AppRepository {
-        return AppRepositoryImp(api, dao, context)
+
+    fun provideLocalDataSource(
+        albumDao: AlbumDao,
+        dispatcher: DispatcherProvider
+    ): LocalDataSource {
+        return LocalDataSourceImp(albumDao, dispatcher)
+    }
+
+    fun provideRemoteDataSource(apiService: ApiService): RemoteDataSource {
+        return RemoteDataSourceImp(apiService)
+    }
+
+    fun provideRepository(
+        remoteDataSource: RemoteDataSource,
+        localDataSource: LocalDataSource,
+        context: Context,
+        dispatcher: DispatcherProvider
+    ): AppRepository {
+        return AppRepositoryImp(remoteDataSource, localDataSource, context, dispatcher)
     }
 
     factory { GetMobileSessionUseCase(get()) }
@@ -36,5 +58,7 @@ val domainModule = module {
     factory { GetAlbumsFromCacheUseCase(get()) }
     factory { DeleteAlbumUseCase(get()) }
 
-    single { provideRepository(get(), get(), androidContext()) }
+    single { provideRemoteDataSource(get()) }
+    single { provideLocalDataSource(get(), DefaultDispatcherProvider()) }
+    single { provideRepository(get(), get(), androidContext(), DefaultDispatcherProvider()) }
 }

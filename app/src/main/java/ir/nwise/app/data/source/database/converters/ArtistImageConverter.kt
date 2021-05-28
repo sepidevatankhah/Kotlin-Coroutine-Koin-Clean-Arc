@@ -1,4 +1,4 @@
-package ir.nwise.app.database.converters
+package ir.nwise.app.data.source.database.converters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
