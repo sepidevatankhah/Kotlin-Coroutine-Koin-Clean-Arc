@@ -1,4 +1,4 @@
-package ir.nwise.app.data.Util
+package ir.nwise.app.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -1,7 +1,7 @@
 package ir.nwise.app.data.repository
 
 import android.content.Context
-import ir.nwise.app.data.Util.NetworkManager.isOnline
+import ir.nwise.app.utils.NetworkManager.isOnline
 import ir.nwise.app.data.source.database.LocalDataSource
 import ir.nwise.app.data.source.remote.RemoteDataSource
 import ir.nwise.app.domain.entities.ArtistSearchDto

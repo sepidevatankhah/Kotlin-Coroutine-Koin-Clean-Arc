@@ -1,11 +1,5 @@
 <resources>
     <string name="app_name">last.fm</string>
-    
-        <string name="views">views</string>
-        <string name="downloads">downloads</string>
-        <string name="likes">likes</string>
-        <string name="search_filter_default_value">flowers</string>
-        <string name="search_view_hint">Search photos</string>
     <string name="this_album_is_already_saved">This album is already saved!</string>
     <string name="save">save</string>
     <string name="delete">Delete</string>
